@@ -1,33 +1,28 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Routers, Routes, Route } from "react-router-dom";
 import './App.css';
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import AuthProvider from "./context/AuthProvider";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <Router>
-      <Switch>
+    <AuthProvider>
+      <Routers>
+        <Routes>
 
-        <Route
-          exact
-          path={process.env.PUBLIC_URL + "/"}
-          component={Home}
-        />
+          <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>}>
+            <Route path="/" element={<Home />} />
+          </Route>
 
-        <Route
-          path={process.env.PUBLIC_URL + "/home"}
-          component={Home}
-        />
+          <Route path="/login" element={< Login />} />
+          <Route path="*" element={< NotFound />} />
 
-        <Route exact component={NotFound} />
-
-      </Switch>
-    </Router>
+        </Routes>
+      </Routers>
+    </AuthProvider>
   );
 }
 
