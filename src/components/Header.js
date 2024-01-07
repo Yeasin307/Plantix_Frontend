@@ -2,9 +2,7 @@ import * as React from 'react';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import GrassIcon from '@mui/icons-material/Grass';
-
-const pages = ['Crops', 'Community'];
-const settings = ['Profile', 'Logout'];
+import { Link } from 'react-router-dom';
 
 function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -77,11 +75,16 @@ function Header() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            <Link to="/community" style={{ textDecoration: 'none' }}>
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">Community</Typography>
                                 </MenuItem>
-                            ))}
+                            </Link>
+                            <Link to="/crops" style={{ textDecoration: 'none' }}>
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">Crops</Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
 
@@ -104,15 +107,22 @@ function Header() {
                         PLANTIX
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse', mr: '16px' }}>
-                        {pages.map((page) => (
+                        <Link to="/community" style={{ textDecoration: 'none' }}>
                             <Button
-                                key={page}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                Community
                             </Button>
-                        ))}
+                        </Link>
+                        <Link to="/crops" style={{ textDecoration: 'none' }}>
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Crops
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -137,11 +147,12 @@ function Header() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center">Profile</Typography>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center">Logout</Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>

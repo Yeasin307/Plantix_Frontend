@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Routers, Routes, Route } from "react-router-dom";
 import './App.css';
-import Home from "./pages/Home";
+import Outlet from "./pages/Outlet";
+import Crop from "./pages/Crop";
+import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import AuthProvider from "./context/AuthProvider";
@@ -13,8 +15,10 @@ function App() {
       <Routers>
         <Routes>
 
-          <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>}>
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={<PrivateRoute><Outlet /></PrivateRoute>}>
+            <Route path="/" element={<Crop />} />
+            <Route path="/crops" element={<Crop />} />
+            <Route path="/community" element={<Community />} />
           </Route>
 
           <Route path="/login" element={< Login />} />

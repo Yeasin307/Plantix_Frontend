@@ -7,6 +7,7 @@ const AuthProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState({});
     const [viewProfile, setViewProfile] = useState(false);
     const [editProfile, setEditProfile] = useState(false);
+    const [cropSelection, setCropSelection] = useState("Rice");
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -58,7 +59,9 @@ const AuthProvider = ({ children }) => {
                 editProfile,
                 setEditProfile,
                 loginUser,
-                logout
+                logout,
+                cropSelection,
+                setCropSelection
             }}>
             {children}
         </AuthContext.Provider>
