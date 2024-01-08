@@ -4,10 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import React, { useState } from 'react'
+import React from 'react'
 
-const Post = () => {
-    const [posts, setPosts] = useState(null);
+const Post = ({ posts, setPosts }) => {
 
     React.useEffect(() => {
         axios.get(`${process.env.REACT_APP_SERVER_API}/posts`, {
@@ -16,7 +15,7 @@ const Post = () => {
             .then((res) => {
                 setPosts(res?.data);
             });
-    }, []);
+    }, [setPosts]);
 
     return (
         <div className='container '>

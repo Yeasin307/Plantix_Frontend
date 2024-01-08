@@ -8,6 +8,9 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import AuthProvider from "./context/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute";
+import Fertilizer from "./pages/Fertilizer";
+import Pests from "./pages/Pests";
+import Cultivation from "./pages/Cultivation";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route path="/" element={<PrivateRoute><Outlet /></PrivateRoute>}>
             <Route path="/" element={<Crop />} />
             <Route path="/crops" element={<Crop />} />
+            <Route path="/fertilizer" element={<Fertilizer />} />
+            <Route path="/pests" element={<Pests />} />
+            <Route path="/cultivation" element={<Cultivation />} />
             <Route path="/community" element={<Community />} />
           </Route>
 
